@@ -2,21 +2,21 @@ package domain;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class OfertaLaboral {
 
     private static int cantSemanasBusquedaCerrada;
+
     private String titulo;
     private String detalleNarrado;
-
     private List<Tarea> tareas;
     private ModalidadDeContrato modalidadDeContrato;
     private TipoDeTrabajo tipoDeTrabajo;
     private Categoria categoria;
     private double montoOfrecido;
     private FrecuenciaPago frecuenciaPago;
-
     private LocalDate fechaAlta;
     private LocalDate fechaFin;
 
@@ -109,6 +109,12 @@ public class OfertaLaboral {
 
     public void agregarTarea(Tarea tarea){
         this.tareas.add(tarea);
+    }
+
+    public void agregarTareas(Tarea ... tareas){
+        // Quiero agregar todas las tareas que lleguen a esta coleccion
+        // VAR ARGS, PARAMETROS VARIABLES
+        Collections.addAll(this.tareas, tareas);
     }
 
     public void eliminarTarea(Tarea tarea){

@@ -17,8 +17,10 @@ public class TestExample {
         Tarea otraTareaMas = new Tarea();
         otraTareaMas.setDescripcion("Realizar tests unitarios");
 
-        unaOfertaLaboral.agregarTarea(otraTarea);
-        unaOfertaLaboral.agregarTarea(otraTareaMas);
+        // unaOfertaLaboral.agregarTarea(otraTarea);
+        // unaOfertaLaboral.agregarTarea(otraTareaMas);
+
+        unaOfertaLaboral.agregarTareas(otraTarea, otraTareaMas);
 
         unaOfertaLaboral.setModalidadDeContrato(ModalidadDeContrato.FULL_TIME);
 
