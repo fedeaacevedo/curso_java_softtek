@@ -135,14 +135,15 @@ public class OfertaLaboral {
     }
 
     public Boolean postulantePuedePostularse(Postulante postulante){
-        Boolean cumpleConRequisitos = true;
+        /*Boolean cumpleConRequisitos = true;
         int i =  0;
 
         while(cumpleConRequisitos && i < this.requisitos.size()){
             cumpleConRequisitos = this.requisitos.get(i).teCumplisPara(postulante);
             i++;
         }
-        return cumpleConRequisitos;
+        return cumpleConRequisitos;*/
+        return this.requisitos.stream().allMatch(requisito -> requisito.teCumplisPara(postulante));
     }
 }
 
