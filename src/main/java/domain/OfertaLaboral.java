@@ -1,5 +1,7 @@
 package domain;
 
+import domain.requisitos.Requisito;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,6 +19,7 @@ public class OfertaLaboral {
     private Categoria categoria;
     private double montoOfrecido;
     private FrecuenciaPago frecuenciaPago;
+    private List<Requisito>requisitos;
     private LocalDate fechaAlta;
     private LocalDate fechaFin;
 
@@ -31,6 +34,7 @@ public class OfertaLaboral {
 
     public OfertaLaboral(){
         this.tareas = new ArrayList<>();
+        this.requisitos = new ArrayList<>();
     }
 
     public String getTitulo() {
@@ -117,6 +121,10 @@ public class OfertaLaboral {
         Collections.addAll(this.tareas, tareas);
     }
 
+    public void agregarRequisitos(Requisito ... requisitos){
+        Collections.addAll(this.requisitos, requisitos);
+    }
+
     public void eliminarTarea(Tarea tarea){
         this.tareas.remove(tarea);
     }
@@ -124,6 +132,17 @@ public class OfertaLaboral {
     private String generarTitulo(){
 
         return this.categoria.getNombre() + " - "+ this.tipoDeTrabajo.detalleParaTitulo();
+    }
+
+    public Boolean postulantePuedePostularse(Postulante postulante){
+        Boolean cumpleConRequisitos = true;
+        int i =  0;
+
+        while(cumpleConRequisitos && i < this.requisitos.size()){
+            cumpleConRequisitos = this.requisitos.get(i).teCumplisPara(postulante);
+            i++;
+        }
+        return cumpleConRequisitos;
     }
 }
 
